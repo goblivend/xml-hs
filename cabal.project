@@ -1,0 +1,15 @@
+-- 1. Déclaration des packages locaux (votre espace de travail)
+packages:
+    .
+
+-- 2. Options de compilation globales (Optimisations pour le développement)
+-- On active les avertissements par défaut et on accélère les builds locaux
+program-options
+    ghc-options: -Wall -O0
+
+-- 3. Configuration spécifique pour la mise en production (Optionnel)
+-- Si vous compilez avec 'cabal build --profile=release', cela activera les optimisations
+package *
+    if flag(release)
+        ghc-options: -O2
+
